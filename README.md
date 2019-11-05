@@ -38,3 +38,13 @@ worksheet.readSheet()
 # How to use
 
 Just run ``` node some-file.js ```
+
+# Google Sheet
+
+The google sheet has constructed like this. You can make locale columns and worksheets as much as you need.
+
+![image](https://drive.google.com/uc?export=view&id=1IX0Q29qBWIgLXMKfJDte5MC1Sha84Lwu)
+
+Columns:
+
+| id | en | th | other language ....
