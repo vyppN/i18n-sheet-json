@@ -2,6 +2,13 @@
 
 This is the library to read Google Sheet and create JSON locale files in your output directory
 
+# Installation
+``` npm install i18n-sheet-json ```
+
+or
+
+``` yarn add i18n-sheet-json ```  
+
 # How to Implement
 
 e.g. ```some-file.js```
