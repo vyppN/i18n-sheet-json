@@ -1,0 +1,9 @@
+{
+  "name": "i18n-sheet-json",
+  "version": "1.0.0",
+  "main": "./gsheet-json",
+  "license": "MIT",
+  "dependencies": {
+    "google-spreadsheet": "^2.0.8"
+  }
+}

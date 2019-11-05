@@ -1,0 +1,5 @@
+node_modules/
+gsheet.json
+test.js
+yarn.lock
+locale/
