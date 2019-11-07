@@ -1,6 +1,6 @@
 {
   "name": "i18n-sheet-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./gsheet-json",
   "license": "MIT",
   "dependencies": {

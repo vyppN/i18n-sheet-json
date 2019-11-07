@@ -8,8 +8,8 @@ function init(config){
     worksheet.setDIR(output_dir)
 }
 
-function readSheet(){
-    worksheet.readSheet()
+function readSheet(namespace=null){
+    worksheet.readSheet(namespace)
 }
 
 module.exports = {init,readSheet}
