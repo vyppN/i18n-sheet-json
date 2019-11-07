@@ -13,7 +13,7 @@ or
 
 ## Service Account
 
-1. Go to the ![link](Google Developers Console)
+1. Go to the [Google Developers Console](https://console.cloud.google.com)
 2. Select your project or create a new one (and then select it)
 3. Enable the Drive API for your project
 
