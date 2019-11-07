@@ -36,6 +36,8 @@ worksheet.readSheet()
 
 // On the otherhands you can specify the worksheet with
 worksheet.readSheet('TITLE_AS_STRING')
+// You can also use parameter as array
+worksheet.readSheet(['TITLE_1','TITLE_2','TITLE_...'])
 ```
 
 # How to use
