@@ -9,11 +9,20 @@ or
 
 ``` yarn add i18n-sheet-json ```  
 
+# Google credential
+
+## Service Account
+
+1. Go to the ![link](Google Developers Console)
+2. Select your project or create a new one (and then select it)
+3. Enable the Drive API for your project
+
 # How to Implement
 
 e.g. ```some-file.js```
 
 ```javascript
+
 
 // Import the library
 const worksheet = require('i18n-sheet-json')
