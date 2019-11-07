@@ -34,7 +34,7 @@ worksheet.init(config)
 // READ Google Sheet and create JSON locale files in your output directory
 worksheet.readSheet()
 
-// On the otherhands you can specific worksheet with
+// On the otherhands you can specify the worksheet with
 worksheet.readSheet('TITLE_AS_STRING')
 ```
 
