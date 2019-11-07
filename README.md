@@ -14,8 +14,21 @@ or
 ## Service Account
 
 1. Go to the [Google Developers Console](https://console.cloud.google.com)
-2. Select your project or create a new one (and then select it)
+2. Select your project or create a new one and then select it
 3. Enable the Drive API for your project
+
+- Expand <b>APIs & auth > APIs</b>
+- Search for "drive"
+- Click on "Drive API"
+- Click on "Enable API" button
+- Create a service account
+- expand <b>APIs & auth > Credentials</b>
+- Click on the "Add credentials" button
+- Select the "Service account"
+- Select the "JSON" key type option
+- Click on "Create" button
+
+Your JSON key file is generated and downloaded to your machine.
 
 # How to Implement
 
@@ -57,6 +70,6 @@ Just run ``` node some-file.js ```
 
 The google sheet has constructed like this. You can make locale columns and worksheets as much as you need.
 
-Columns:
-
-| id | en | th | other language ....
+**id** | **th** | **en** | **other..**
+:---: | :-----------: | :-----------: | ---
+title | สวัสดี | Hello | ...
