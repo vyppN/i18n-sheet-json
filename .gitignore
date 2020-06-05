@@ -3,3 +3,4 @@ gsheet.json
 test.js
 yarn.lock
 locale/
+.idea
