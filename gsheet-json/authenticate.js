@@ -1,9 +1,8 @@
 function useServiceAccountAuth(credentials,doc) {
     return new Promise((resolve, reject) => {
-        doc.useServiceAccountAuth(credentials, err => {
-            if (err) reject(err)
-            resolve()
-        })
+        doc.useServiceAccountAuth(credentials)
+            .then(resolve)
+            .catch(reject)
     })
 }
 module.exports = useServiceAccountAuth

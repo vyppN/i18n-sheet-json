@@ -1,4 +1,4 @@
-const GoogleSheet = require('google-spreadsheet')
+const {GoogleSpreadsheet} = require('google-spreadsheet')
 const useServiceAccountAuth = require('./authenticate')
 const generator = require('./generator')
 
@@ -23,20 +23,20 @@ function setDIR(dir) {
 }
 
 function getWorkSheets(doc) {
-	return new Promise((resolve, reject) => {
-		doc.getInfo((err, info) => {
-			if (err) reject(err)
-			resolve(info.worksheets)
-		})
+	return new Promise(async (resolve, reject) => {
+		await doc.loadInfo()
+		let sheets = []
+		for(let i = 0;i<doc.sheetCount;i++){
+			sheets.push(doc.sheetsByIndex[i])
+		}
+		resolve(sheets)
 	})
 }
 
-function getRows(index, doc) {
-	return new Promise((resolve, reject) => {
-		doc.getRows(index, {}, (err, rows) => {
-			if (err) reject(err)
-			resolve(rows)
-		})
+function getRows(index, worksheets) {
+	return new Promise(async (resolve, reject) => {
+		const rows = await worksheets[index].getRows().catch(reject)
+		resolve(rows)
 	})
 }
 
@@ -48,34 +48,37 @@ function isNamespaceNotFound(index, namespace) {
 	return false
 }
 
-async function generateRow(index,namespace,doc){
+async function generateRow(index,namespace,sheets){
     console.info(`Get rows for ${namespace}...`)
-    let rows = await getRows(index + 1, doc)
+    let rows = await getRows(index, sheets)
     generator.generateJSON(localeDIR, namespace, rows)
 }
 
 async function readSheet(namespace = null) {
 	console.info('Reading spread sheet...')
-	const doc = new GoogleSheet(sheetID)
+
+	const doc = new GoogleSpreadsheet(sheetID)
 	await useServiceAccountAuth(_credential, doc)
 	let worksheets = await getWorkSheets(doc)
+
 	let titles = worksheets.map(worksheet => worksheet.title)
+
 	if (namespace) {
 		if (Array.isArray(namespace)) {
 			let indexs = {}
 			namespace.map(name => (indexs[name] = titles.indexOf(name)))
 			Object.keys(indexs).forEach(key => {
                 if (isNamespaceNotFound(indexs[key], key)) return
-                generateRow(indexs[key],key,doc)
+                generateRow(indexs[key],key,worksheets)
 			})
 		} else {
 			let titleIndex = titles.indexOf(namespace)
 			if (isNamespaceNotFound(titleIndex, namespace)) return
-            generateRow(titleIndex,namespace,doc)
+            generateRow(titleIndex,namespace,worksheets)
 		}
 	} else {
 		titles.forEach(async (title, index) => {
-			generateRow(index,title,doc)
+			generateRow(index,title,worksheets)
 		})
 	}
 }
